@@ -26,10 +26,10 @@ echo "Installing fedy..."
 fver="$(rpm -E %fedora)"
 curl -s -f -L "http://download.opensuse.org/repositories/home:/satya164:/fedy/Fedora_${fver}/repodata/repomd.xml" -o /dev/null
 if [[ $? -eq 0 ]]; then
-    yum -y install --nogpgcheck --skip-broken fedy
+    dnf -y install --nogpgcheck --best fedy
 else
-    yum -y install --nogpgcheck --skip-broken coreutils curl sed tar unzip wget yad
-    yum -y install --nogpgcheck --skip-broken --releasever="$((fver-1))" fedy
+    dnf -y install --nogpgcheck --best coreutils curl sed tar unzip wget yad
+    dnf -y install --nogpgcheck --best --releasever="$((fver-1))" fedy
 fi
 
 # Please report bugs at <http://github.com/satya164/fedy/issues>
