@@ -12,6 +12,6 @@
 			"label": "Remove",
 			"command": "sh uninstall.sh"
 		},
-		"status": { "command": "test -e ~/.local/share/bittorrent-sync/btsync" }
+		"status": { "command": "bash -c 'test -e ~/.local/share/bittorrent-sync/btsync'" }
 	}
 }
