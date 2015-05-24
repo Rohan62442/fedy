@@ -33,7 +33,7 @@ ln -sf "$HOME/.local/share/bittorrent-sync/btsync" "$HOME/.local/bin/btsync"
 cat <<EOF | tee $HOME/.local/share/applications/bittorrent-sync.desktop
 [Desktop Entry]
 Name=BitTorrent Sync
-Icon=bittorrent-sync
+Icon=btsync-user
 Comment=Sync Anything You Want
 Exec=bash -c "btsync; xdg-open http://127.0.0.1:8888"
 Terminal=false
