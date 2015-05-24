@@ -1,0 +1,17 @@
+{
+	"icon": "bittorrent-sync",
+	"label": "BitTorrent Sync",
+	"description": "Sync Anything You Want.",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "sh install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "sh uninstall.sh"
+		},
+		"status": { "command": "test -e ~/.local/share/bittorrent-sync/btsync" }
+	}
+}
