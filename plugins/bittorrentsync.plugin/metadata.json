@@ -6,12 +6,12 @@
 	"scripts": {
 		"exec": {
 			"label": "Install",
-			"command": "sh install.sh"
+			"command": "run-as-root -s install.sh"
 		},
 		"undo": {
 			"label": "Remove",
-			"command": "sh uninstall.sh"
+			"command": "run-as-root -s uninstall.sh"
 		},
-		"status": { "command": "bash -c 'test -e ~/.local/share/bittorrent-sync/btsync'" }
+		"status": { "command": "test -e /opt/bittorrent-sync/btsync" }
 	}
 }

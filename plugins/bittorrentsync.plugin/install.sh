@@ -6,7 +6,7 @@ else
 	ARCH="32"
 fi
 
-CACHEDIR="$HOME/.cache/fedy/bittorrentsync";
+CACHEDIR="/var/cache/fedy/bittorrentsync";
 
 mkdir -p "$CACHEDIR"
 cd "$CACHEDIR"
@@ -25,17 +25,20 @@ if [[ ! -f "$FILE" ]]; then
 	exit 1
 fi
 
-mkdir -p "$HOME/.local/share/bittorrent-sync"
-mkdir -p "$HOME/.local/bin"
-tar -xf "$FILE" -C "$HOME/.local/share/bittorrent-sync"
-ln -sf "$HOME/.local/share/bittorrent-sync/btsync" "$HOME/.local/bin/btsync"
+mkdir -p "/opt/bittorrent-sync"
+tar -xf "$FILE" -C "/opt/bittorrent-sync"
+ln -sf "/opt/bittorrent-sync/btsync" "/usr/bin/btsync"
 
-cat <<EOF | tee $HOME/.local/share/applications/bittorrent-sync.desktop
+btsync --dump-sample-config > /etc/btsync.conf
+systemctl enable btsync
+systemctl start btsync
+
+cat <<EOF | tee /usr/share/applications/bittorrent-sync.desktop
 [Desktop Entry]
 Name=BitTorrent Sync
 Icon=btsync-user
 Comment=Sync Anything You Want
-Exec=bash -c "btsync; xdg-open http://127.0.0.1:8888"
+Exec=xdg-open http://127.0.0.1:8888
 Terminal=false
 Type=Application
 StartupNotify=true
