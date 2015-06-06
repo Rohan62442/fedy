@@ -1,0 +1,17 @@
+{
+	"icon": "spotify-client",
+	"label": "Spotify",
+	"description": "A commercial music streaming, podcast and video service.",
+	"category": "Apps",
+	"scripts": {
+		"exec": {
+			"label": "Install",
+			"command": "run-as-root -s install.sh"
+		},
+		"undo": {
+			"label": "Remove",
+			"command": "run-as-root dnf -y --setopt clean_requirements_on_remove=1 erase spotify-client"
+		},
+		"status": { "command": "rpm --quiet --query spotify-client" }
+	}
+}
